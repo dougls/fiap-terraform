@@ -3,6 +3,7 @@ resource "aws_db_instance" "rds" {
   engine                       = var.engineRds
   engine_version               = var.engineRdsVersion
   identifier                   = "rds-${var.projectName}"
+  # manage_master_user_password  = true 
   username                     = var.rdsUser
   password                     = var.rdsPass
   instance_class               = var.instanceClass
@@ -22,3 +23,5 @@ resource "aws_db_instance" "rds" {
   copy_tags_to_snapshot        = true
   delete_automated_backups     = true
 }
+
+# Caso queira que o AWS Secrets gerencie a senha master, descomente a linha 6 e comente a linha 8, nesse caso ele vai gerar uma e salvar lá.
